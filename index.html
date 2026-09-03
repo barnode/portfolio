@@ -62,27 +62,40 @@
   .car-arrow:hover { background: #b2d8a7; color: #0b0e0d; border-color: #b2d8a7; }
   .car-dot { box-sizing: content-box; width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 14px 8px; margin: -14px 0; background-color: rgba(250,255,228,.28); background-clip: content-box; cursor: pointer; transition: background-color .25s, transform .25s; }
   /* Radius scale (documented, size-proportional): controls 2px · media cards 12px · large containers 20px */
-  /* Hero is a contained rounded box: its own edge defines the video, so no full-bleed and no harsh cut-off */
-  .hero-box {
-    position: relative; overflow: hidden; isolation: isolate;
-    border-radius: 20px; border: 1px solid rgba(250,255,228,.12);
-    background: #0e1311;
+  /* Header panel spans the full viewport so its edge never cuts a rectangle across the backdrop */
+  .site-header::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw;
+    transform: translateX(-50%); z-index: -1;
+    background: rgba(11,14,13,.82);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(250,255,228,.12);
   }
-  .hero-media { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: center/cover no-repeat; }
+  /* Hero: full-bleed video backdrop, fading into the ground colour at the bottom */
+  .hero-media {
+    position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%);
+    z-index: 0; pointer-events: none; overflow: hidden; background: center/cover no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+  }
   .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .92; }
-  /* Scrim holds WCAG contrast across the type column, then opens up so the footage is actually visible.
-     Second layer eases the top and bottom into the ground colour inside the box. */
-  .hero-scrim {
-    position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      linear-gradient(to bottom, rgba(11,14,13,.66) 0%, rgba(11,14,13,.4) 20%, rgba(11,14,13,0) 40%, rgba(11,14,13,0) 70%, rgba(11,14,13,.52) 100%),
-      linear-gradient(100deg, rgba(11,14,13,.96) 0%, rgba(11,14,13,.93) 45%, rgba(11,14,13,.84) 66%, rgba(11,14,13,.55) 78%, rgba(11,14,13,.3) 90%, rgba(11,14,13,.38) 100%);
+  /* ambient grade so the surround sits in the palette instead of glaring */
+  .hero-media::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(11,14,13,.58) 0%, rgba(11,14,13,.16) 28%, rgba(11,14,13,.22) 68%, rgba(11,14,13,.55) 100%);
+  }
+  /* Content card floats on the backdrop; translucent so the footage still reads through it */
+  .hero-card {
+    position: relative; z-index: 1;
+    border-radius: 20px; border: 1px solid rgba(250,255,228,.14);
+    background: rgba(11,14,13,.88);
+    -webkit-backdrop-filter: blur(20px) saturate(1.06); backdrop-filter: blur(20px) saturate(1.06);
+    box-shadow: 0 26px 70px rgba(0,0,0,.5);
   }
   .hero-content { position: relative; z-index: 1; }
   /* phones and reduced-motion: still poster, no video payload */
   @media (max-width: 640px) {
     .hero-media video { display: none; }
-    .hero-media { background-image: url('./assets/video/desert-poster.jpg'); opacity: .75; }
+    .hero-media { background-image: url('./assets/video/desert-poster.jpg'); }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-media video { display: none; }
@@ -125,7 +138,7 @@
 
 <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,44px)">
 
-  <header class="site-header" style="position:sticky;top:0;z-index:20;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 0 18px;background:rgba(11,14,13,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(250,255,228,.12)">
+  <header class="site-header" style="position:sticky;top:0;z-index:20;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 0 18px">
     <a href="#top" style="font-size:15px;font-weight:600;letter-spacing:-0.01em;color:#faffe4">Kavyanssh H Srivastav</a>
     <nav class="site-nav" style="display:flex;align-items:baseline;flex-wrap:wrap;gap:14px 22px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase">
       <a class="navlink" href="#work" style="color:#a4d1c6">Work</a>
@@ -135,17 +148,18 @@
     </nav>
   </header>
 
-  <section id="top" class="hero-box" style="margin:clamp(16px,2.5vw,28px) 0 clamp(56px,7vw,88px);padding:clamp(64px,8vw,104px) clamp(26px,4.5vw,60px) clamp(64px,8vw,96px)">
+  <section id="top" style="position:relative;padding:clamp(30px,4.5vw,64px) 0 clamp(72px,9vw,124px)">
     <div class="hero-media" aria-hidden="true">
       <video autoplay muted loop playsinline preload="metadata" poster="./assets/video/desert-poster.jpg">
         <source src="./assets/video/desert-bg.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="hero-content">
+    <div class="hero-card" style="padding:clamp(52px,6.5vw,88px) clamp(26px,4.5vw,60px) clamp(52px,6.5vw,80px)">
+      <div class="hero-content">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6;margin-bottom:44px">Real-time environments · Unreal Engine 5 · Noida, India</div>
       <h1 style="margin:0;max-width:16ch;font-size:clamp(48px,7.4vw,104px);line-height:0.94;letter-spacing:-0.032em;font-weight:700;text-wrap:balance">Portfolio Showcase.</h1>
       <p style="margin:52px 0 0;max-width:62ch;font-size:19px;line-height:1.62;color:rgba(250,255,228,.78);text-wrap:pretty">Final-year Animation &amp; Multimedia student designing real-time environments in Unreal Engine. Published a psychological horror game built on lighting and level design; degree research on virtual production graded A. Seeking a master's in game design or immersive media.</p>
+      </div>
     </div>
   </section>
 
