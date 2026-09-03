@@ -78,21 +78,6 @@
     mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
   }
   .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .92; }
-  /* Backdrop stills crossfade over the video base, one after another, on a 34s loop.
-     Deliberately not gated by prefers-reduced-motion: this is a slow, low-amplitude
-     ambient crossfade (no parallax, no flashing, no scroll-hijack), not the class of
-     motion that guidance targets, and it's the site's headline visual. */
-  .bd-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
-  .bd-img.i1 { animation: bd1 34s ease-in-out infinite; }
-  .bd-img.i2 { animation: bd2 34s ease-in-out infinite; }
-  .bd-img.i3 { animation: bd3 34s ease-in-out infinite; }
-  .bd-img.i4 { animation: bd4 34s ease-in-out infinite; }
-  .bd-img.i5 { animation: bd5 34s ease-in-out infinite; }
-  @keyframes bd1 { 0%,0%{opacity:0} 4.118%,14.706%{opacity:1} 18.824%,100%{opacity:0} }
-  @keyframes bd2 { 0%,18.824%{opacity:0} 22.941%,33.529%{opacity:1} 37.647%,100%{opacity:0} }
-  @keyframes bd3 { 0%,37.647%{opacity:0} 41.765%,52.353%{opacity:1} 56.471%,100%{opacity:0} }
-  @keyframes bd4 { 0%,56.471%{opacity:0} 60.588%,71.176%{opacity:1} 75.294%,100%{opacity:0} }
-  @keyframes bd5 { 0%,75.294%{opacity:0} 79.412%,90%{opacity:1} 94.118%,100%{opacity:0} }
   /* ambient grade so the surround sits in the palette instead of glaring */
   .hero-media::after {
     content: ""; position: absolute; inset: 0;
@@ -114,7 +99,7 @@
   .hero-content { position: relative; z-index: 1; }
   /* phones and reduced-motion: still poster, no video payload */
   @media (max-width: 640px) {
-    .hero-media video, .bd-img { display: none; }
+    .hero-media video { display: none; }
     .hero-media { background-image: url('./assets/video/desert-poster.jpg'); }
   }
   /* linkedin cards */
@@ -147,8 +132,6 @@
     *, *::before, *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
     .om-fade { opacity: 1 !important; transform: none !important; filter: none !important; }
     .car-track { transition: none !important; }
-    /* hero backdrop crossfade is exempt from the blanket reduced-motion collapse above */
-    .bd-img.i1, .bd-img.i2, .bd-img.i3, .bd-img.i4, .bd-img.i5 { animation-duration: 34s !important; }
   }
 </style>
 </head>
@@ -171,11 +154,6 @@
       <video autoplay muted loop playsinline preload="metadata" poster="./assets/video/desert-poster.jpg">
         <source src="./assets/video/desert-bg.mp4" type="video/mp4">
       </video>
-      <img class="bd-img i1" src="./assets/video/backdrop-1.jpg" alt="" loading="eager">
-      <img class="bd-img i2" src="./assets/video/backdrop-2.jpg" alt="" loading="eager">
-      <img class="bd-img i3" src="./assets/video/backdrop-3.jpg" alt="" loading="eager">
-      <img class="bd-img i4" src="./assets/video/backdrop-4.jpg" alt="" loading="eager">
-      <img class="bd-img i5" src="./assets/video/backdrop-5.jpg" alt="" loading="eager">
     </div>
     <div class="hero-card" style="padding:clamp(52px,6.5vw,88px) clamp(26px,4.5vw,60px) clamp(52px,6.5vw,80px)">
       <div class="hero-content">
@@ -553,6 +531,17 @@
         <li style="font-size:15.5px;line-height:1.66;color:rgba(250,255,228,.78);padding-left:18px;border-left:1px solid #3d8e79">Designed a Round-of-32 knockout to fit a one-hour window, trading entrant numbers for schedule.</li>
         <li style="font-size:15.5px;line-height:1.66;color:rgba(250,255,228,.78);padding-left:18px;border-left:1px solid #3d8e79">Recruited and directed the photography and graphic design crew.</li>
       </ul>
+    </div>
+  </section>
+
+  <section style="padding:96px 0 0;border-bottom:1px solid rgba(250,255,228,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:44px" class="om-fade">Stills</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(28px,4vw,48px);padding-bottom:96px">
+      <img class="om-fade" src="./assets/video/backdrop-1.jpg" alt="A black hole silhouetted against its glowing accretion disc, a small moon passing in front" loading="lazy" style="width:100%;aspect-ratio:1680/703;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
+      <img class="om-fade" src="./assets/video/backdrop-2.jpg" alt="A weathered rowboat on a red-lit rocky shoreline, a lighthouse standing at the cliffs beyond" loading="lazy" style="width:100%;aspect-ratio:1680/945;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
+      <img class="om-fade" src="./assets/video/backdrop-3.jpg" alt="A hazy, fog-shrouded cityscape in ruin, seen from above a broken perimeter wall" loading="lazy" style="width:100%;aspect-ratio:1680/700;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
+      <img class="om-fade" src="./assets/video/backdrop-4.jpg" alt="A weathered tractor in a golden field at sunset, a farmhouse and lake beyond" loading="lazy" style="width:100%;aspect-ratio:1680/945;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
+      <img class="om-fade" src="./assets/video/backdrop-5.jpg" alt="A towering kaiju looming over a demolished city at dusk, smoke rising from the ruins" loading="lazy" style="width:100%;aspect-ratio:1680/699;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
     </div>
   </section>
 
