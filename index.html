@@ -83,8 +83,11 @@
     content: ""; position: absolute; inset: 0;
     background: linear-gradient(to bottom, rgba(11,14,13,.58) 0%, rgba(11,14,13,.16) 28%, rgba(11,14,13,.22) 68%, rgba(11,14,13,.55) 100%);
   }
-  /* Content card floats on the backdrop; translucent so the footage still reads through it */
-  .hero-card {
+  /* Content card floats on the backdrop; translucent so the footage still reads through it.
+     .glass-card reuses the exact same recipe for every section that now floats over the
+     continuous video+stills backdrop running down the page, pulled up to overlap the tail
+     of the still above it. */
+  .hero-card, .glass-card {
     position: relative; z-index: 1;
     border-radius: 20px; border: 1px solid rgba(250,255,228,.14);
     background: rgba(11,14,13,.35);
@@ -94,7 +97,11 @@
   }
   /* if backdrop-filter is unavailable the fill has to carry legibility on its own */
   @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
-    .hero-card { background: rgba(11,14,13,.88); }
+    .hero-card, .glass-card { background: rgba(11,14,13,.88); }
+  }
+  .glass-card {
+    margin: clamp(-130px,-9vw,-56px) 0 clamp(48px,6vw,72px);
+    padding: clamp(48px,6vw,80px) clamp(26px,4.5vw,60px);
   }
   .hero-content { position: relative; z-index: 1; }
   /* phones and reduced-motion: still poster, no video payload */
@@ -173,7 +180,9 @@
     </div>
   </section>
 
-  <section id="work" style="padding:72px 0 0">
+  <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/703"><img src="./assets/video/backdrop-1.jpg" alt="A black hole silhouetted against its glowing accretion disc, a small moon passing in front" loading="lazy"></div></div>
+
+  <section id="work" class="glass-card om-fade">
     <div style="display:flex;align-items:baseline;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:8px">
       <span>Selected work</span>
     </div>
@@ -497,7 +506,9 @@
 
   </section>
 
-  <section id="practice" style="padding:96px 0;border-bottom:1px solid rgba(250,255,228,.12)" class="om-fade">
+  <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/945"><img src="./assets/video/backdrop-2.jpg" alt="A weathered rowboat on a red-lit rocky shoreline, a lighthouse standing at the cliffs beyond" loading="lazy"></div></div>
+
+  <section id="practice" class="glass-card om-fade">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:48px">Practice</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px 40px">
       <div style="display:flex;flex-direction:column;gap:12px">
@@ -519,7 +530,9 @@
     </div>
   </section>
 
-  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(48px,6vw,80px);padding:96px 0;border-bottom:1px solid rgba(250,255,228,.12)" class="om-fade">
+  <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/700"><img src="./assets/video/backdrop-3.jpg" alt="A hazy, fog-shrouded cityscape in ruin, seen from above a broken perimeter wall" loading="lazy"></div></div>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(48px,6vw,80px)" class="glass-card om-fade">
     <div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:36px">Education</div>
       <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.28;max-width:26ch">B.Sc. (Hons.) Animation &amp; Multimedia</div>
@@ -543,10 +556,7 @@
     </div>
   </section>
 
-  <div style="display:flex;flex-direction:column;gap:clamp(56px,7vw,96px);padding:40px 0 96px">
-    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/703"><img src="./assets/video/backdrop-1.jpg" alt="A black hole silhouetted against its glowing accretion disc, a small moon passing in front" loading="lazy"></div></div>
-    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/945"><img src="./assets/video/backdrop-2.jpg" alt="A weathered rowboat on a red-lit rocky shoreline, a lighthouse standing at the cliffs beyond" loading="lazy"></div></div>
-    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/700"><img src="./assets/video/backdrop-3.jpg" alt="A hazy, fog-shrouded cityscape in ruin, seen from above a broken perimeter wall" loading="lazy"></div></div>
+  <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,40px);padding:8px 0 88px">
     <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/945"><img src="./assets/video/backdrop-4.jpg" alt="A weathered tractor in a golden field at sunset, a farmhouse and lake beyond" loading="lazy"></div></div>
     <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/699"><img src="./assets/video/backdrop-5.jpg" alt="A towering kaiju looming over a demolished city at dusk, smoke rising from the ruins" loading="lazy"></div></div>
   </div>
