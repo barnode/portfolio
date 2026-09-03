@@ -121,11 +121,6 @@
   /* linkedin cards */
   .lw-card { transition: background .2s; }
   .lw-card:hover { background: #111614; }
-  /* accordion content eases open (progressive; ignored where ::details-content is unsupported) */
-  @media (prefers-reduced-motion: no-preference) {
-    #work details::details-content { opacity: 0; transform: translateY(-6px); transition: opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); }
-    #work details[open]::details-content { opacity: 1; transform: none; }
-  }
   /* work rows - collapse the 4-col header so meta stops colliding with the title */
   @media (max-width: 720px) {
     .om-row { grid-template-columns: auto 1fr auto !important; column-gap: 16px !important; row-gap: 8px !important; }
