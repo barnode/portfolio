@@ -23,8 +23,8 @@
     src: url('./assets/fonts/IBMPlexMono-500.woff2') format('woff2');
     font-weight: 500; font-style: normal; font-display: swap;
   }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: #0b0e0d; color: #faffe4; font-family: 'Cabinet Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: #0b0e0d; color: #faffe4; font-family: 'Cabinet Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
   a { color: #b2d8a7; text-decoration: none; }
   a:hover { color: #faffe4; }
   ::selection { background: #3d8e79; color: #faffe4; }
@@ -61,6 +61,32 @@
   .car-arrow.r { right: 12px; }
   .car-arrow:hover { background: #b2d8a7; color: #0b0e0d; border-color: #b2d8a7; }
   .car-dot { box-sizing: content-box; width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 14px 8px; margin: -14px 0; background-color: rgba(250,255,228,.28); background-clip: content-box; cursor: pointer; transition: background-color .25s, transform .25s; }
+  /* Hero backdrop video — edges dissolve into the ground colour, never a hard rectangle */
+  .hero-media {
+    position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%);
+    z-index: 0; pointer-events: none; overflow: hidden;
+    background: center/cover no-repeat;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 58%, transparent 97%), linear-gradient(to right, transparent 0%, #000 14%, #000 76%, transparent 99%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 58%, transparent 97%), linear-gradient(to right, transparent 0%, #000 14%, #000 76%, transparent 99%);
+    mask-composite: intersect;
+  }
+  .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .5; }
+  /* scrim: dense where the type sits, opening toward the empty right side */
+  .hero-scrim {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: linear-gradient(103deg, rgba(11,14,13,.97) 0%, rgba(11,14,13,.93) 36%, rgba(11,14,13,.8) 62%, rgba(11,14,13,.52) 88%, rgba(11,14,13,.66) 100%);
+  }
+  .hero-content { position: relative; z-index: 1; }
+  /* phones and reduced-motion: still poster, no video payload */
+  @media (max-width: 640px) {
+    .hero-media video { display: none; }
+    .hero-media { background-image: url('./assets/video/desert-poster.jpg'); opacity: .42; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-media video { display: none; }
+    .hero-media { background-image: url('./assets/video/desert-poster.jpg'); }
+  }
   /* linkedin cards */
   .lw-card { transition: background .2s; }
   .lw-card:hover { background: #111614; }
@@ -108,10 +134,18 @@
     </nav>
   </header>
 
-  <section id="top" style="padding:92px 0 84px;border-bottom:1px solid rgba(250,255,228,.12)">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:44px">Real-time environments · Unreal Engine 5 · Noida, India</div>
-    <h1 style="margin:0;max-width:16ch;font-size:clamp(48px,7.4vw,104px);line-height:0.94;letter-spacing:-0.032em;font-weight:700;text-wrap:balance">Portfolio Showcase.</h1>
-    <p style="margin:52px 0 0;max-width:62ch;font-size:19px;line-height:1.62;color:rgba(250,255,228,.78);text-wrap:pretty">Final-year Animation &amp; Multimedia student designing real-time environments in Unreal Engine. Published a psychological horror game built on lighting and level design; degree research on virtual production graded A. Seeking a master's in game design or immersive media.</p>
+  <section id="top" style="position:relative;padding:92px 0 84px;border-bottom:1px solid rgba(250,255,228,.12)">
+    <div class="hero-media" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="./assets/video/desert-poster.jpg">
+        <source src="./assets/video/desert-bg.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:44px">Real-time environments · Unreal Engine 5 · Noida, India</div>
+      <h1 style="margin:0;max-width:16ch;font-size:clamp(48px,7.4vw,104px);line-height:0.94;letter-spacing:-0.032em;font-weight:700;text-wrap:balance">Portfolio Showcase.</h1>
+      <p style="margin:52px 0 0;max-width:62ch;font-size:19px;line-height:1.62;color:rgba(250,255,228,.78);text-wrap:pretty">Final-year Animation &amp; Multimedia student designing real-time environments in Unreal Engine. Published a psychological horror game built on lighting and level design; degree research on virtual production graded A. Seeking a master's in game design or immersive media.</p>
+    </div>
   </section>
 
   <section id="work" style="padding:72px 0 0">
