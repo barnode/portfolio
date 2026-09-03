@@ -102,6 +102,15 @@
     .hero-media video { display: none; }
     .hero-media { background-image: url('./assets/video/desert-poster.jpg'); }
   }
+  /* Stills: full-bleed backdrop bands, same treatment as the hero video - not
+     a bordered gallery card, just image as backdrop, edges dissolving into the page. */
+  .bd-band {
+    position: relative; left: 50%; width: 100vw; transform: translateX(-50%);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  }
+  .bd-band img { width: 100%; height: 100%; object-fit: cover; display: block; }
   /* linkedin cards */
   .lw-card { transition: background .2s; }
   .lw-card:hover { background: #111614; }
@@ -534,16 +543,13 @@
     </div>
   </section>
 
-  <section style="padding:96px 0 0;border-bottom:1px solid rgba(250,255,228,.12)">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:44px" class="om-fade">Stills</div>
-    <div style="display:flex;flex-direction:column;gap:clamp(28px,4vw,48px);padding-bottom:96px">
-      <img class="om-fade" src="./assets/video/backdrop-1.jpg" alt="A black hole silhouetted against its glowing accretion disc, a small moon passing in front" loading="lazy" style="width:100%;aspect-ratio:1680/703;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
-      <img class="om-fade" src="./assets/video/backdrop-2.jpg" alt="A weathered rowboat on a red-lit rocky shoreline, a lighthouse standing at the cliffs beyond" loading="lazy" style="width:100%;aspect-ratio:1680/945;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
-      <img class="om-fade" src="./assets/video/backdrop-3.jpg" alt="A hazy, fog-shrouded cityscape in ruin, seen from above a broken perimeter wall" loading="lazy" style="width:100%;aspect-ratio:1680/700;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
-      <img class="om-fade" src="./assets/video/backdrop-4.jpg" alt="A weathered tractor in a golden field at sunset, a farmhouse and lake beyond" loading="lazy" style="width:100%;aspect-ratio:1680/945;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
-      <img class="om-fade" src="./assets/video/backdrop-5.jpg" alt="A towering kaiju looming over a demolished city at dusk, smoke rising from the ruins" loading="lazy" style="width:100%;aspect-ratio:1680/699;object-fit:cover;display:block;border-radius:20px;border:1px solid rgba(250,255,228,.14)">
-    </div>
-  </section>
+  <div style="display:flex;flex-direction:column;gap:clamp(56px,7vw,96px);padding:40px 0 96px">
+    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/703"><img src="./assets/video/backdrop-1.jpg" alt="A black hole silhouetted against its glowing accretion disc, a small moon passing in front" loading="lazy"></div></div>
+    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/945"><img src="./assets/video/backdrop-2.jpg" alt="A weathered rowboat on a red-lit rocky shoreline, a lighthouse standing at the cliffs beyond" loading="lazy"></div></div>
+    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/700"><img src="./assets/video/backdrop-3.jpg" alt="A hazy, fog-shrouded cityscape in ruin, seen from above a broken perimeter wall" loading="lazy"></div></div>
+    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/945"><img src="./assets/video/backdrop-4.jpg" alt="A weathered tractor in a golden field at sunset, a farmhouse and lake beyond" loading="lazy"></div></div>
+    <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/699"><img src="./assets/video/backdrop-5.jpg" alt="A towering kaiju looming over a demolished city at dusk, smoke rising from the ruins" loading="lazy"></div></div>
+  </div>
 
   <footer id="contact" style="padding:110px 0 90px" class="om-fade">
     <h2 style="margin:0;font-size:clamp(38px,6vw,80px);line-height:0.98;letter-spacing:-0.032em;font-weight:700;max-width:18ch">Connect with me at.</h2>
