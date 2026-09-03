@@ -100,7 +100,7 @@
     .hero-card, .glass-card { background: rgba(11,14,13,.88); }
   }
   .glass-card {
-    margin: clamp(-130px,-9vw,-56px) 0 clamp(48px,6vw,72px);
+    margin: clamp(-96px,-7vw,-48px) 0 0;
     padding: clamp(48px,6vw,80px) clamp(26px,4.5vw,60px);
   }
   .hero-content { position: relative; z-index: 1; }
@@ -114,8 +114,8 @@
   .bd-band {
     position: relative; left: 50%; width: 100vw; transform: translateX(-50%);
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
   }
   .bd-band img { width: 100%; height: 100%; object-fit: cover; display: block; }
   /* linkedin cards */
@@ -165,7 +165,7 @@
     </nav>
   </header>
 
-  <section id="top" style="position:relative;padding:clamp(30px,4.5vw,64px) 0 clamp(72px,9vw,124px)">
+  <section id="top" style="position:relative;padding:clamp(30px,4.5vw,64px) 0 clamp(36px,4.5vw,56px)">
     <div class="hero-media" aria-hidden="true">
       <video autoplay muted loop playsinline preload="metadata" poster="./assets/video/desert-poster.jpg">
         <source src="./assets/video/desert-bg.mp4" type="video/mp4">
@@ -183,29 +183,29 @@
   <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/703"><img src="./assets/video/backdrop-1.jpg" alt="A black hole silhouetted against its glowing accretion disc, a small moon passing in front" loading="lazy"></div></div>
 
   <section id="work" class="glass-card om-fade">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:8px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6;margin-bottom:8px">
       <span>Selected work</span>
     </div>
 
     <details open class="om-fade">
       <summary class="om-row" style="display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,auto) 28px;align-items:baseline;gap:20px;padding:32px 0 30px;border-top:1px solid rgba(250,255,228,.12)">
-        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3d8e79;transition:color .25s">01</span>
+        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#a4d1c6;transition:color .25s">01</span>
         <span class="om-title" style="font-size:clamp(26px,3.2vw,40px);line-height:1.06;letter-spacing:-0.03em;font-weight:600;transition:color .25s">Project Arc</span>
         <span class="om-meta" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#a4d1c6;text-align:right;max-width:34ch">Real-time architectural visualisation · Client engagement</span>
-        <span class="om-caret" style="justify-self:end;font-size:20px;color:#3d8e79;transition:transform .3s;line-height:1">+</span>
+        <span class="om-caret" style="justify-self:end;font-size:20px;color:#a4d1c6;transition:transform .3s;line-height:1">+</span>
       </summary>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(32px,4vw,56px);padding:6px 0 56px clamp(0px,5vw,72px)">
         <div style="display:flex;flex-direction:column;gap:30px;max-width:52ch">
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Scope</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Scope</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Directed level design, interface, motion and colour for a product that began as personal work and was subsequently commissioned.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Problem solved</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Problem solved</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Diagnosed a first-launch stutter caused by driver shader compilation and specified a shader preparation stage to resolve it.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Status</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Status</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84)">Unreal Engine 5. Complete, awaiting deployment.</p>
           </div>
           <a href="https://youtu.be/bsz7VxMZJns" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.06em;border-bottom:1px solid #3d8e79;padding-bottom:4px;align-self:flex-start">Watch the walkthrough →</a>
@@ -233,7 +233,7 @@
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Full walkthrough</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Full walkthrough</div>
             <div style="position:relative;width:100%;aspect-ratio:16/9;background:#111614;border:1px solid rgba(250,255,228,.14)">
               <iframe src="https://www.youtube-nocookie.com/embed/bsz7VxMZJns?rel=0" title="ProjectArch walkthrough" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
             </div>
@@ -245,30 +245,30 @@
 
     <details class="om-fade">
       <summary class="om-row" style="display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,auto) 28px;align-items:baseline;gap:20px;padding:32px 0 30px;border-top:1px solid rgba(250,255,228,.12)">
-        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3d8e79;transition:color .25s">02</span>
+        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#a4d1c6;transition:color .25s">02</span>
         <span class="om-title" style="font-size:clamp(26px,3.2vw,40px);line-height:1.06;letter-spacing:-0.03em;font-weight:600;transition:color .25s">Virtual Production Pipeline</span>
         <span class="om-meta" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#a4d1c6;text-align:right;max-width:34ch">Degree showcase · Grade A · externally examined</span>
-        <span class="om-caret" style="justify-self:end;font-size:20px;color:#3d8e79;transition:transform .3s;line-height:1">+</span>
+        <span class="om-caret" style="justify-self:end;font-size:20px;color:#a4d1c6;transition:transform .3s;line-height:1">+</span>
       </summary>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(32px,4vw,56px);padding:6px 0 56px clamp(0px,5vw,72px)">
         <div style="display:flex;flex-direction:column;gap:30px;max-width:52ch">
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Premise</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Premise</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Built and evaluated a five-stage pipeline replacing LED volumes and tracking rigs with an iPhone, for filmmakers without studio access.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Technical</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Technical</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Integrated ARKit camera tracking and COLMAP solving with a custom UE5 Composure network that relights live footage using AI-extracted PBR passes.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Findings</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Findings</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Documented three engine-level trade-offs, including the conflict between Lumen's temporal accumulation and frame-accurate plate synchronisation.</p>
           </div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#a4d1c6">7 credits · 2026</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:12px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Full handbook · 20 pages</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Full handbook · 20 pages</div>
             <a href="./assets/Virtual-Production-Handbook.pdf" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;white-space:nowrap;border-bottom:1px solid #3d8e79;padding-bottom:3px">Open ↗</a>
           </div>
           <div style="position:relative;border:1px solid rgba(250,255,228,.16);background:#111614">
@@ -281,23 +281,23 @@
 
     <details class="om-fade">
       <summary class="om-row" style="display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,auto) 28px;align-items:baseline;gap:20px;padding:32px 0 30px;border-top:1px solid rgba(250,255,228,.12)">
-        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3d8e79;transition:color .25s">03</span>
+        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#a4d1c6;transition:color .25s">03</span>
         <span class="om-title" style="font-size:clamp(26px,3.2vw,40px);line-height:1.06;letter-spacing:-0.03em;font-weight:600;transition:color .25s">False Memory</span>
         <span class="om-meta" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#a4d1c6;text-align:right;max-width:34ch">First-person psychological horror · Playable</span>
-        <span class="om-caret" style="justify-self:end;font-size:20px;color:#3d8e79;transition:transform .3s;line-height:1">+</span>
+        <span class="om-caret" style="justify-self:end;font-size:20px;color:#a4d1c6;transition:transform .3s;line-height:1">+</span>
       </summary>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(32px,4vw,56px);padding:6px 0 64px clamp(0px,5vw,72px)">
         <div style="display:flex;flex-direction:column;gap:30px;max-width:52ch">
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Design</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Design</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Designed level and lighting for a narrative horror game using atmosphere rather than threat as the primary tool.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Writing</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Writing</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Wrote a short-form story resolving in one sitting; scoped around third-party systems to keep design effort on environment and narrative.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Process</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Process</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Sole developer; playtested externally and iterated on the results.</p>
           </div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#a4d1c6">Unreal Engine 5 · Maya</div>
@@ -340,23 +340,23 @@
 
     <details class="om-fade">
       <summary class="om-row" style="display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,auto) 28px;align-items:baseline;gap:20px;padding:32px 0 30px;border-top:1px solid rgba(250,255,228,.12)">
-        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3d8e79;transition:color .25s">04</span>
+        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#a4d1c6;transition:color .25s">04</span>
         <span class="om-title" style="font-size:clamp(26px,3.2vw,40px);line-height:1.06;letter-spacing:-0.03em;font-weight:600;transition:color .25s">Project Vesper</span>
         <span class="om-meta" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#a4d1c6;text-align:right;max-width:34ch">Souls-like action game · Solo · 2026-present</span>
-        <span class="om-caret" style="justify-self:end;font-size:20px;color:#3d8e79;transition:transform .3s;line-height:1">+</span>
+        <span class="om-caret" style="justify-self:end;font-size:20px;color:#a4d1c6;transition:transform .3s;line-height:1">+</span>
       </summary>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(32px,4vw,56px);padding:6px 0 56px clamp(0px,5vw,72px)">
         <div style="display:flex;flex-direction:column;gap:30px;max-width:52ch">
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Level design</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Level design</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Designing the critical path through a gothic cathedral complex, with optional content branching off the main route.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Narrative</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Narrative</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Writing narrative and environmental storytelling; restaged the central battle as a one-sided ambush to align level with story.</p>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Production</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Production</div>
             <p style="margin:0;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Building the cutscenes as an AI-generated pipeline, scoping one project across two module briefs.</p>
           </div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#a4d1c6">Unreal Engine 5 · Final Year Degree Project, in progress</div>
@@ -384,23 +384,23 @@
               <div class="car-counter" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#a4d1c6;white-space:nowrap"></div>
             </div>
           </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#3d8e79">In-development screenshots</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#a4d1c6">In-development screenshots</div>
         </div>
       </div>
     </details>
 
     <details class="om-fade">
       <summary class="om-row" style="display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,auto) 28px;align-items:baseline;gap:20px;padding:32px 0 30px;border-top:1px solid rgba(250,255,228,.12);border-bottom:1px solid rgba(250,255,228,.12)">
-        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3d8e79;transition:color .25s">05</span>
+        <span class="om-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#a4d1c6;transition:color .25s">05</span>
         <span class="om-title" style="font-size:clamp(26px,3.2vw,40px);line-height:1.06;letter-spacing:-0.03em;font-weight:600;transition:color .25s">Other Work</span>
         <span class="om-meta" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#a4d1c6;text-align:right;max-width:34ch">Cinematics · tributes · level-design studies</span>
-        <span class="om-caret" style="justify-self:end;font-size:20px;color:#3d8e79;transition:transform .3s;line-height:1">+</span>
+        <span class="om-caret" style="justify-self:end;font-size:20px;color:#a4d1c6;transition:transform .3s;line-height:1">+</span>
       </summary>
       <div style="padding:6px 0 64px clamp(0px,5vw,72px);display:flex;flex-direction:column;gap:52px">
         <p style="margin:0;max-width:60ch;font-size:16.5px;line-height:1.66;color:rgba(250,255,228,.84);text-wrap:pretty">Cinematics, film tributes and speed level-design studies made in Unreal Engine 5 and edited in DaVinci Resolve, alongside a gallery of early environment work.</p>
 
         <div style="display:flex;flex-direction:column;gap:20px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Cinematics · YouTube</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Cinematics · YouTube</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(20px,2.4vw,32px)">
             <div style="display:flex;flex-direction:column;gap:13px">
               <div style="position:relative;width:100%;aspect-ratio:16/9;background:#111614;border:1px solid rgba(250,255,228,.14)">
@@ -433,12 +433,12 @@
         </div>
 
         <div style="display:flex;flex-direction:column;gap:20px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">Posts · LinkedIn</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">Posts · LinkedIn</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:clamp(24px,3vw,36px)">
             <div style="display:flex;flex-direction:column;gap:11px">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">The Last of Us Part II: Farmhouse</span>
-                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_ive-recreated-the-iconic-farmhouse-level-activity-7353351253311062017-LcZO" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
+                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_ive-recreated-the-iconic-farmhouse-level-activity-7353351253311062017-LcZO" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#a4d1c6;white-space:nowrap">Open ↗</a>
               </div>
               <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7353351253311062017" title="LinkedIn post: The Last of Us Part II Farmhouse" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
@@ -447,7 +447,7 @@
             <div style="display:flex;flex-direction:column;gap:11px">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">Cyberpunk Cityscape</span>
-                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_built-a-cyberpunk-themed-cityscape-in-activity-7373770107803553792-iWBU" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
+                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_built-a-cyberpunk-themed-cityscape-in-activity-7373770107803553792-iWBU" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#a4d1c6;white-space:nowrap">Open ↗</a>
               </div>
               <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7373770107803553792" title="LinkedIn post: Cyberpunk Cityscape" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
@@ -456,7 +456,7 @@
             <div style="display:flex;flex-direction:column;gap:11px">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">The Batman: Three Shots</span>
-                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_unrealengine5-thebatman-cinematics-activity-7400878925079539713-cjpl" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
+                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_unrealengine5-thebatman-cinematics-activity-7400878925079539713-cjpl" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#a4d1c6;white-space:nowrap">Open ↗</a>
               </div>
               <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7400878925079539713" title="LinkedIn post: The Batman Three Shots" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
@@ -465,7 +465,7 @@
             <div style="display:flex;flex-direction:column;gap:11px">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">Godzilla: Final Roar</span>
-                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_unrealengine5-ue5-cinematic-activity-7407769130159833088-XK4p" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
+                <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_unrealengine5-ue5-cinematic-activity-7407769130159833088-XK4p" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#a4d1c6;white-space:nowrap">Open ↗</a>
               </div>
               <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7407769130159833088" title="LinkedIn post: Godzilla Final Roar" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
@@ -475,7 +475,7 @@
         </div>
 
         <div style="display:flex;flex-direction:column;gap:20px">
-          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6">
             <span>Early work · Unreal Engine 5</span><span style="color:#a4d1c6">20 stills</span>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px">
@@ -509,7 +509,7 @@
   <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/945"><img src="./assets/video/backdrop-2.jpg" alt="A weathered rowboat on a red-lit rocky shoreline, a lighthouse standing at the cliffs beyond" loading="lazy"></div></div>
 
   <section id="practice" class="glass-card om-fade">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:48px">Practice</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6;margin-bottom:48px">Practice</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:44px 40px">
       <div style="display:flex;flex-direction:column;gap:12px">
         <div style="font-size:17px;font-weight:600;color:#b2d8a7">Real-time &amp; virtual production</div>
@@ -534,7 +534,7 @@
 
   <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(48px,6vw,80px)" class="glass-card om-fade">
     <div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:36px">Education</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6;margin-bottom:36px">Education</div>
       <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.28;max-width:26ch">B.Sc. (Hons.) Animation &amp; Multimedia</div>
       <div style="margin-top:10px;font-size:16px;color:rgba(250,255,228,.74)">Birla Institute of Technology, Mesra, Noida</div>
       <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#a4d1c6">
@@ -545,7 +545,7 @@
       <div style="margin-top:24px;font-size:15.5px;line-height:1.7;color:rgba(250,255,228,.66);max-width:46ch">A+ in Game Design, Game Engine, 3D Compositing for Camera, UI/UX and Production Design Workshop.</div>
     </div>
     <div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:36px">Leadership</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6;margin-bottom:36px">Leadership</div>
       <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.28;max-width:26ch">eSports Championship, Co-Organiser</div>
       <div style="margin-top:10px;font-size:16px;color:rgba(250,255,228,.74)">BIT Noida Sports Club · 2025, 2026</div>
       <ul style="margin:26px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px">
@@ -556,7 +556,7 @@
     </div>
   </section>
 
-  <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,40px);padding:8px 0 88px">
+  <div style="display:flex;flex-direction:column;gap:0;padding:0 0 24px">
     <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/945"><img src="./assets/video/backdrop-4.jpg" alt="A weathered tractor in a golden field at sunset, a farmhouse and lake beyond" loading="lazy"></div></div>
     <div class="om-fade"><div class="bd-band" style="aspect-ratio:1680/699"><img src="./assets/video/backdrop-5.jpg" alt="A towering kaiju looming over a demolished city at dusk, smoke rising from the ruins" loading="lazy"></div></div>
   </div>
