@@ -61,27 +61,28 @@
   .car-arrow.r { right: 12px; }
   .car-arrow:hover { background: #b2d8a7; color: #0b0e0d; border-color: #b2d8a7; }
   .car-dot { box-sizing: content-box; width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 14px 8px; margin: -14px 0; background-color: rgba(250,255,228,.28); background-clip: content-box; cursor: pointer; transition: background-color .25s, transform .25s; }
-  /* Hero backdrop video — edges dissolve into the ground colour, never a hard rectangle */
-  .hero-media {
-    position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%);
-    z-index: 0; pointer-events: none; overflow: hidden;
-    background: center/cover no-repeat;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 58%, transparent 97%), linear-gradient(to right, transparent 0%, #000 14%, #000 76%, transparent 99%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 58%, transparent 97%), linear-gradient(to right, transparent 0%, #000 14%, #000 76%, transparent 99%);
-    mask-composite: intersect;
+  /* Radius scale (documented, size-proportional): controls 2px · media cards 12px · large containers 20px */
+  /* Hero is a contained rounded box: its own edge defines the video, so no full-bleed and no harsh cut-off */
+  .hero-box {
+    position: relative; overflow: hidden; isolation: isolate;
+    border-radius: 20px; border: 1px solid rgba(250,255,228,.12);
+    background: #0e1311;
   }
-  .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .5; }
-  /* scrim: dense where the type sits, opening toward the empty right side */
+  .hero-media { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: center/cover no-repeat; }
+  .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .92; }
+  /* Scrim holds WCAG contrast across the type column, then opens up so the footage is actually visible.
+     Second layer eases the top and bottom into the ground colour inside the box. */
   .hero-scrim {
     position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background: linear-gradient(103deg, rgba(11,14,13,.97) 0%, rgba(11,14,13,.93) 36%, rgba(11,14,13,.8) 62%, rgba(11,14,13,.52) 88%, rgba(11,14,13,.66) 100%);
+    background:
+      linear-gradient(to bottom, rgba(11,14,13,.66) 0%, rgba(11,14,13,.4) 20%, rgba(11,14,13,0) 40%, rgba(11,14,13,0) 70%, rgba(11,14,13,.52) 100%),
+      linear-gradient(100deg, rgba(11,14,13,.96) 0%, rgba(11,14,13,.93) 45%, rgba(11,14,13,.84) 66%, rgba(11,14,13,.55) 78%, rgba(11,14,13,.3) 90%, rgba(11,14,13,.38) 100%);
   }
   .hero-content { position: relative; z-index: 1; }
   /* phones and reduced-motion: still poster, no video payload */
   @media (max-width: 640px) {
     .hero-media video { display: none; }
-    .hero-media { background-image: url('./assets/video/desert-poster.jpg'); opacity: .42; }
+    .hero-media { background-image: url('./assets/video/desert-poster.jpg'); opacity: .75; }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-media video { display: none; }
@@ -134,7 +135,7 @@
     </nav>
   </header>
 
-  <section id="top" style="position:relative;padding:92px 0 84px;border-bottom:1px solid rgba(250,255,228,.12)">
+  <section id="top" class="hero-box" style="margin:clamp(16px,2.5vw,28px) 0 clamp(56px,7vw,88px);padding:clamp(64px,8vw,104px) clamp(26px,4.5vw,60px) clamp(64px,8vw,96px)">
     <div class="hero-media" aria-hidden="true">
       <video autoplay muted loop playsinline preload="metadata" poster="./assets/video/desert-poster.jpg">
         <source src="./assets/video/desert-bg.mp4" type="video/mp4">
@@ -142,7 +143,7 @@
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-content">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#3d8e79;margin-bottom:44px">Real-time environments · Unreal Engine 5 · Noida, India</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#a4d1c6;margin-bottom:44px">Real-time environments · Unreal Engine 5 · Noida, India</div>
       <h1 style="margin:0;max-width:16ch;font-size:clamp(48px,7.4vw,104px);line-height:0.94;letter-spacing:-0.032em;font-weight:700;text-wrap:balance">Portfolio Showcase.</h1>
       <p style="margin:52px 0 0;max-width:62ch;font-size:19px;line-height:1.62;color:rgba(250,255,228,.78);text-wrap:pretty">Final-year Animation &amp; Multimedia student designing real-time environments in Unreal Engine. Published a psychological horror game built on lighting and level design; degree research on virtual production graded A. Seeking a master's in game design or immersive media.</p>
     </div>
@@ -406,7 +407,7 @@
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">The Last of Us Part II: Farmhouse</span>
                 <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_ive-recreated-the-iconic-farmhouse-level-activity-7353351253311062017-LcZO" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
               </div>
-              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:10px;background:#111614;overflow:hidden">
+              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7353351253311062017" title="LinkedIn post: The Last of Us Part II Farmhouse" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
               </div>
             </div>
@@ -415,7 +416,7 @@
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">Cyberpunk Cityscape</span>
                 <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_built-a-cyberpunk-themed-cityscape-in-activity-7373770107803553792-iWBU" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
               </div>
-              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:10px;background:#111614;overflow:hidden">
+              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7373770107803553792" title="LinkedIn post: Cyberpunk Cityscape" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
               </div>
             </div>
@@ -424,7 +425,7 @@
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">The Batman: Three Shots</span>
                 <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_unrealengine5-thebatman-cinematics-activity-7400878925079539713-cjpl" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
               </div>
-              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:10px;background:#111614;overflow:hidden">
+              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7400878925079539713" title="LinkedIn post: The Batman Three Shots" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
               </div>
             </div>
@@ -433,7 +434,7 @@
                 <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:#faffe4">Godzilla: Final Roar</span>
                 <a href="https://www.linkedin.com/posts/kavyanssh-srivastav-7067172aa_unrealengine5-ue5-cinematic-activity-7407769130159833088-XK4p" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#3d8e79;white-space:nowrap">Open ↗</a>
               </div>
-              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:10px;background:#111614;overflow:hidden">
+              <div class="li-frame" style="position:relative;width:100%;aspect-ratio:4/5;border:1px solid rgba(250,255,228,.12);border-radius:12px;background:#111614;overflow:hidden">
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7407769130159833088" title="LinkedIn post: Godzilla Final Roar" loading="lazy" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
               </div>
             </div>
