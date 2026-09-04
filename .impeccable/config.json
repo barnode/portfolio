@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "site/index.html"
+        ],
+        "createdAt": "2026-09-04T16:47:24.588Z",
+        "reason": "bdB is the JS crossfade back-buffer, intentionally empty src at load; JS sets it before ever showing it, opacity:0 until then"
+      }
+    ]
+  }
+}

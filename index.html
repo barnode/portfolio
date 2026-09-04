@@ -78,21 +78,13 @@
     mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
   }
   .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .92; }
-  /* Backdrop stills crossfade over the video base, one after another, on a 34s loop.
+  /* Backdrop stills crossfade over the video base, one after another, driven by a plain
+     JS timer swapping between just TWO image layers (not five animating simultaneously).
      Deliberately not gated by prefers-reduced-motion: this is a slow, low-amplitude
      ambient crossfade (no parallax, no flashing, no scroll-hijack), not the class of
      motion that guidance targets, and it's the site's headline visual. */
-  .bd-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: opacity; }
-  .bd-img.i1 { animation: bd1 30s ease-in-out infinite; }
-  .bd-img.i2 { animation: bd2 30s ease-in-out infinite; }
-  .bd-img.i3 { animation: bd3 30s ease-in-out infinite; }
-  .bd-img.i4 { animation: bd4 30s ease-in-out infinite; }
-  .bd-img.i5 { animation: bd5 30s ease-in-out infinite; }
-  @keyframes bd1 { 0%{opacity:0} 5%,15%{opacity:1} 20%,100%{opacity:0} }
-  @keyframes bd2 { 0%,20%{opacity:0} 25%,35%{opacity:1} 40%,100%{opacity:0} }
-  @keyframes bd3 { 0%,40%{opacity:0} 45%,55%{opacity:1} 60%,100%{opacity:0} }
-  @keyframes bd4 { 0%,60%{opacity:0} 65%,75%{opacity:1} 80%,100%{opacity:0} }
-  @keyframes bd5 { 0%,80%{opacity:0} 85%,95%{opacity:1} 100%{opacity:0} }
+  .bd-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: opacity; transition: opacity 1.5s ease-in-out; }
+  .bd-img.bd-show { opacity: 1; }
   /* ambient grade so the surround sits in the palette instead of glaring */
   .hero-media::after {
     content: ""; position: absolute; inset: 0;
@@ -171,11 +163,8 @@
       <video autoplay muted loop playsinline preload="metadata" poster="./assets/video/desert-poster.jpg">
         <source src="./assets/video/desert-bg.mp4" type="video/mp4">
       </video>
-      <img class="bd-img i1" src="./assets/video/backdrop-1.jpg" alt="" loading="eager">
-      <img class="bd-img i2" src="./assets/video/backdrop-2.jpg" alt="" loading="eager">
-      <img class="bd-img i3" src="./assets/video/backdrop-3.jpg" alt="" loading="eager">
-      <img class="bd-img i4" src="./assets/video/backdrop-4.jpg" alt="" loading="eager">
-      <img class="bd-img i5" src="./assets/video/backdrop-5.jpg" alt="" loading="eager">
+      <img class="bd-img bd-show" id="bdA" src="./assets/video/backdrop-1.jpg" alt="" loading="eager">
+      <img class="bd-img" id="bdB" src="" alt="" loading="eager">
     </div>
     <div class="hero-card" style="padding:clamp(52px,6.5vw,88px) clamp(26px,4.5vw,60px) clamp(52px,6.5vw,80px)">
       <div class="hero-content">
@@ -570,6 +559,46 @@
 </div>
 
 <script>
+// Hero backdrop crossfade: only ever 2 large images resident (front/back), not 5
+// animating simultaneously - keeps GPU memory/compositing load low so the cadence
+// stays even on real hardware, not just in a math-only check.
+(function () {
+  var mq = window.matchMedia('(max-width: 640px)');
+  if (mq.matches) return; // mobile shows the poster only, no image payload
+  var srcs = [
+    './assets/video/backdrop-1.jpg',
+    './assets/video/backdrop-2.jpg',
+    './assets/video/backdrop-3.jpg',
+    './assets/video/backdrop-4.jpg',
+    './assets/video/backdrop-5.jpg'
+  ];
+  var a = document.getElementById('bdA');
+  var b = document.getElementById('bdB');
+  if (!a || !b) return;
+  var idx = 0;
+  var front = a, back = b;
+  var HOLD_MS = 6000;
+  function advance() {
+    idx = (idx + 1) % srcs.length;
+    back.src = srcs[idx];
+    var show = function () {
+      back.classList.add('bd-show');
+      front.classList.remove('bd-show');
+      var tmp = front; front = back; back = tmp;
+    };
+    // decode() isn't reliable everywhere (can hang or never resolve); never let it
+    // block the cycle - race it against a short timeout so show() always fires.
+    if (back.decode) {
+      var fired = false;
+      var run = function () { if (!fired) { fired = true; show(); } };
+      back.decode().then(run, run);
+      setTimeout(run, 200);
+    } else {
+      show();
+    }
+  }
+  setInterval(advance, HOLD_MS);
+})();
 // Carousels - one function drives all three (Project Arc, False Memory, Project Vesper)
 document.querySelectorAll('.car').forEach(function (car) {
   var track = car.querySelector('.car-track');
